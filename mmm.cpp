@@ -45,6 +45,8 @@ int main(void)
     tiempo_atencion = fopen("atencion.txt", "w");
     tiempo_entre_llegadas = fopen("llegadas.txt", "w");
 
+    inicializar();
+
     /* Escribe en el archivo de salida los encabezados del reporte y los parametros iniciales */
     fprintf(resultados, "Sistema de Colas Simple\n\n");
     fprintf(resultados, /* */
@@ -53,8 +55,8 @@ int main(void)
             "Tiempo promedio de atencion%16.3f minutos\n\n", media_atencion);
     fprintf(resultados, /* */
             "Numero de clientes%14d\n\n", num_esperas_requerido);
-
-    inicializar();
+    fprintf(resultados, /* */
+            "Numero de servidores%14d\n\n", num_servidores);
 
     /* Corre la simulacion mientras se hayan completado un número de esperas requeridas como parametro */
     while (num_clientes_espera < num_esperas_requerido)
